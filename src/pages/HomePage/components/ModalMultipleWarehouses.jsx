@@ -100,12 +100,14 @@ const ModalMultipleWarehouses = ({
     setWarehouses(warehouses);
     setErrors(newErrors);
     const names = success.map((warehouse) => warehouse.code).join(", ");
-    handleSnackbar({
-      open: true,
-      duration: 6000,
-      message: `Warehouses ${names} created successfully`,
-      severity: "success",
-    });
+    if (success.length) {
+      handleSnackbar({
+        open: true,
+        duration: 6000,
+        message: `Warehouses ${names} created successfully`,
+        severity: "success",
+      });
+    }
     if (!newErrors.length) _handleClose();
   };
 
